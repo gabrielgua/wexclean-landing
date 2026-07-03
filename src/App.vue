@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import Container from './components/Container.vue';
 import Header from './components/Header.vue';
+import Hero from './components/Hero.vue';
 
 </script>
 
 <template>
   <Header />
+  <Hero />
 </template>
 
 <style></style>
