@@ -1,9 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Container from './components/Container.vue';
+import Header from './components/Header.vue';
+
+</script>
 
 <template>
-  <p class="text-lg font-bold">
-    Bem-vindo ao WEX CLEAN!
-  </p>
+  <Header />
 </template>
 
 <style></style>
