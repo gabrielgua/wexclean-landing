@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Benefits from './components/Benefits.vue';
+import CallToAction from './components/CallToAction.vue';
 import Categories from './components/Categories.vue';
 import Header from './components/Header.vue';
 import Hero from './components/Hero.vue';
@@ -13,4 +14,5 @@ import Marquee from './components/Marquee.vue';
   <Marquee />
   <Categories />
   <Benefits />
+  <CallToAction />
 </template>

@@ -17,8 +17,10 @@ import Section from './Section.vue';
       Linha profissional de limpeza
     </template>
     <template #title>
-      Limpeza que você <br> <span class="text-green">vê</span>. <br>
-      Resultado que você sente.
+      <span class="hero-title">
+        Limpeza que você <br> <span class="text-green">vê</span>. <br>
+        Resultado que você sente.
+      </span>
     </template>
     <template #description>
       A WEX CLEAN reúne produtos de alta performance pra limpeza pesada — de extratoras a pisos, gordura, pet e
@@ -35,3 +37,9 @@ import Section from './Section.vue';
     </template>
   </Section>
 </template>
+
+<style>
+.hero-title {
+  font-size: clamp(40px, 6.4vw, 72px);
+}
+</style>
