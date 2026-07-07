@@ -7,7 +7,7 @@ import Logo from './Logo.vue';
 </script>
 
 <template>
-  <header class="sticky z-50 bg-white/95 backdrop-blur-sm py-3">
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm py-3">
     <Container class="flex items-center justify-between">
       <Logo />
       <nav class="flex items-center justify-between space-x-10">
