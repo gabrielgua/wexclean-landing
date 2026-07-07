@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Benefits from './components/Benefits.vue';
 import Categories from './components/Categories.vue';
 import Header from './components/Header.vue';
 import Hero from './components/Hero.vue';
@@ -11,4 +12,5 @@ import Marquee from './components/Marquee.vue';
   <Hero />
   <Marquee />
   <Categories />
+  <Benefits />
 </template>
