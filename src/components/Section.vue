@@ -26,7 +26,7 @@ withDefaults(defineProps<{
         :class="[badgeBgColor, badgeTextColor]">
         <slot name="badge" />
       </div>
-      <h1 class="hero-title">
+      <h1 class="hero-title" :class="[textColor]">
         <slot name="title" />
       </h1>
       <p class="text-lg leading-relaxed max-w-xl" :class="[descriptionTextColor]">
@@ -41,6 +41,5 @@ withDefaults(defineProps<{
 <style scoped>
 .hero-title {
   font-size: clamp(40px, 6.4vw, 72px);
-  color: var(--color-paper)
 }
 </style>
