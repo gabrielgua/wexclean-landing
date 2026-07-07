@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Button from '@/Button.vue';
 import Section from './Section.vue';
+import Icon from './Icon.vue';
+import { MessageCircle, MoveRight } from '@lucide/vue';
 
 </script>
 
@@ -28,9 +30,13 @@ import Section from './Section.vue';
     </template>
     <template #content>
       <div class="flex items-center gap-4">
-        <Button class="px-10">Ver produtos</Button>
+        <Button class="px-10">
+          Ver produtos
+          <Icon :icon="MoveRight" />
+        </Button>
         <Button class="px-10" bg-color="bg-navy" text-color="text-white" shadow-color="shadow-white"
           border-color="border-white">
+          <Icon :icon="MessageCircle" />
           Fale Conosco
         </Button>
       </div>

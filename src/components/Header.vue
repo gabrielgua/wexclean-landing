@@ -3,6 +3,8 @@ import Button from '@/Button.vue';
 import Container from './Container.vue';
 import NavLink from './header/NavLink.vue';
 import Logo from './Logo.vue';
+import Icon from './Icon.vue';
+import { MessageCircle } from '@lucide/vue';
 
 </script>
 
@@ -15,7 +17,10 @@ import Logo from './Logo.vue';
         <NavLink to="/">Sobre</NavLink>
         <NavLink to="/">Contato</NavLink>
       </nav>
-      <Button>Fale Conosco</Button>
+      <Button>
+        <Icon :icon="MessageCircle" fill="var(--color-paper)" />
+        Fale Conosco
+      </Button>
     </Container>
   </header>
 </template>

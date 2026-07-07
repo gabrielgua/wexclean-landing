@@ -10,11 +10,13 @@ import Marquee from './components/Marquee.vue';
 </script>
 
 <template>
-  <Header />
-  <Hero />
-  <Marquee />
-  <Categories />
-  <Benefits />
-  <CallToAction />
-  <Footer />
+  <div class="flex flex-col min-h-dvh">
+    <Header />
+    <Hero />
+    <Marquee />
+    <Categories />
+    <Benefits />
+    <CallToAction />
+    <Footer class="mt-auto" />
+  </div>
 </template>
