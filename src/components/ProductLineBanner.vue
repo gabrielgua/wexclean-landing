@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import Button from '@/Button.vue';
 import type { LucideIcon } from '@lucide/vue';
-import { ChevronDown, ListChecks, Layers, ExternalLink, Flower2, Bubbles, Leaf } from '@lucide/vue';
-import Icon from './Icon.vue';
+import { Bubbles, Cherry, ChevronDown, ExternalLink, Leaf, Sprout } from '@lucide/vue';
+import { ref } from 'vue';
 import Container from './Container.vue';
 import Divider from './Divider.vue';
-import Button from '@/Button.vue';
+import Icon from './Icon.vue';
 
 type ProductIndications = {
   label: string,
   icon: LucideIcon
+}
+
+type ProductDetails = {
+  title?: string,
+  details?: string,
 }
 
 withDefaults(defineProps<{
@@ -22,22 +27,22 @@ withDefaults(defineProps<{
   amazonUrl: string,
   bgClass?: string,
   textClass?: string,
-  details?: string[],
+  details?: ProductDetails[],
+  reverse?: boolean,
+  imgUrl?: string
 }>(), {
   bgClass: 'bg-navy',
   textClass: 'text-cream',
-  details: () => [
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae erat euismod, malesuada mauris eget, sodales sem. Integer non nibh nec quam feugiat porttitor. Nulla facilisi.',
-    'Suspendisse potenti. Vivamus a lorem in dui posuere lacinia. Fusce vel felis a leo bibendum efficitur. Donec sit amet sapien nec risus fermentum consequat.',
-  ],
+  reverse: false
 })
 
-const isOpen = ref(false);
+const shiowDetails = ref(false);
 </script>
 
 <template>
   <section :class="bgClass">
-    <Container class="grid grid-cols-1 md:grid-cols-2 gap-8 py-14 md:py-16">
+    <Container class="grid grid-cols-1 md:grid-cols-2 gap-8 py-14 md:py-16"
+      :class="reverse ? 'md:[&>div:first-child]:order-2 md:[&>div:last-child]:order-1' : ''">
       <div class="space-y-8">
         <div class="flex items-center gap-5">
           <div
@@ -70,13 +75,15 @@ const isOpen = ref(false);
 
         <Divider />
 
-        <div :class="textClass">
-          <p>
-            Detergente concentrado para extratoras disponíveis nos tamanhos:
-            <strong>1 Litro</strong>
-            e
-            <strong>5 Litros</strong>.
-          </p>
+        <div :class="textClass" class="space-y-6">
+          <h3>Tamanhos disponíveis</h3>
+          <ul class="flex items-center gap-3">
+            <li class="py-1 px-3 border-2 rounded-full  border-paper text-sm font-bold" v-for="(size, i) in sizes"
+              :key="i">
+              {{ size }}
+            </li>
+          </ul>
+
         </div>
 
         <div>
@@ -84,7 +91,7 @@ const isOpen = ref(false);
             class="p-6 rounded-3xl border-4 border-navy bg-cream grid grid-cols-[repeat(auto-fit,minmax(80px,1fr))] gap-8 leading-relaxed">
             <li class="flex flex-col items-center gap-4 text-base">
               <div class="bg-rose-100 grid place-items-center rounded-full p-5">
-                <Icon :icon="Flower2" :size="64" class="text-rose-400" />
+                <Icon :icon="Cherry" :size="64" class="text-rose-400" />
               </div>
               <p class="text-base text-center uppercase font-['Anton',sans-serif]">
                 Fragrância <br>
@@ -109,6 +116,15 @@ const isOpen = ref(false);
                 Biodegradável
               </p>
             </li>
+            <li class="flex flex-col items-center gap-4 text-base">
+              <div class="bg-emerald-100 grid place-items-center rounded-full p-5">
+                <Icon :icon="Sprout" :size="64" class="text-emerald-500" />
+              </div>
+              <p class="text-base text-center uppercase font-['Anton',sans-serif]">
+                Ph <br>
+                Neutro
+              </p>
+            </li>
           </ul>
         </div>
 
@@ -121,25 +137,29 @@ const isOpen = ref(false);
             Conferir na Amazon
           </Button>
 
-          <Button class="w-full justify-center" type="button" :aria-expanded="isOpen" @click="isOpen = !isOpen">
-            {{ isOpen ? 'Fechar' : 'Mais Informações' }}
+          <Button class="w-full justify-center" type="button" :aria-expanded="shiowDetails"
+            @click="shiowDetails = !shiowDetails">
+            {{ shiowDetails ? 'Fechar' : 'Mais Informações' }}
             <Icon :icon="ChevronDown" class="h-4 w-4 transition-transform duration-300"
-              :class="{ 'rotate-180': isOpen }" />
+              :class="{ 'rotate-180': shiowDetails }" />
           </Button>
         </div>
 
         <div class="grid transition-all duration-300 ease-in-out"
-          :class="isOpen ? 'mt-8 grid-rows-[1fr] opacity-100' : 'mt-0 grid-rows-[0fr] opacity-0'">
+          :class="shiowDetails ? 'mt-8 grid-rows-[1fr] opacity-100' : 'mt-0 grid-rows-[0fr] opacity-0'">
           <div class="overflow-hidden">
             <div
-              class="space-y-4 rounded-2xl border-[3px] border-navy bg-white/95 p-7 text-sm leading-relaxed text-navy/80 md:text-base">
-              <p v-for="(paragraph, i) in details" :key="i">{{ paragraph }}</p>
+              class="space-y-4 rounded-2xl border-[3px] border-navy bg-white/95 p-6 text-sm leading-relaxed md:text-base">
+              <div v-for="(paragraph, i) in details" :key="i">
+                <p class="text-navy-deep font-extrabold uppercase" v-if="paragraph.title">{{ paragraph.title }}</p>
+                <p class="text-navy/80">{{ paragraph.details }}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="flex items-center justify-center overflow-hidden">
-        <img src="../../public/images/limpa-extrai-1l.png" alt="Limpa Extrai 1L" class="max-h-200 -mx-8" />
+        <img :src="imgUrl" :alt="title" class="max-h-200 -mx-8" />
       </div>
     </Container>
   </section>
