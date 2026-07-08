@@ -25,7 +25,7 @@ withDefaults(defineProps<{
     <slot name="background" />
     <Container class="space-y-6 relative" :class="{ 'text-center': centered }">
       <div v-if="$slots['badge']" class="rounded-full w-max px-4 py-1.5 uppercase font-bold text-sm tracking-wider"
-        :class="[badgeBgColor, badgeTextColor]">
+        :class="[badgeBgColor, badgeTextColor, { 'mx-auto': centered }]">
         <slot name="badge" />
       </div>
       <h1 class="section-title" :class="[textColor]">

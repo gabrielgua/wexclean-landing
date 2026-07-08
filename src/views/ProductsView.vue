@@ -1,37 +1,55 @@
 <script setup lang="ts">
 import Section from '@/components/Section.vue';
-import ProductCard from '@/components/ProductCard.vue';
+import ProductLineBanner from '@/components/ProductLineBanner.vue';
+import { Armchair, Bone, BrushCleaning, Car, Dog, Droplets, PawPrint, Shell, Sofa, Wind } from '@lucide/vue';
 
-const products = [
+const lines = [
   {
-    image: '../images/limpa-extrai-1l.png',
-    title: 'WEX CLEAN Detergente Concentrado para Extratoras Limpa & Extrai 1L',
-    description: 'Fórmula de alta espuma para extratoras de carpete e estofados. Remove sujeira profunda sem deixar resíduo.',
-    amazonUrl: 'https://www.amazon.com.br/s?k=wex+clean+extratora+pro',
+    icon: Droplets,
+    title: 'Linha Extratoras',
+    tagline: 'Limpeza profissional',
+    description: 'Fórmula de baixa espumação e poder de remoção pra extratoras de carpete e estofados. Sujeira profunda pra fora, sem deixar resíduo.',
+    bgClass: 'bg-navy',
+    textClass: 'text-cream',
+    indications: [
+      { label: 'Carpetes e tapetes', icon: Shell },
+      { label: 'Estofados e sofás', icon: Sofa },
+      { label: 'Bancos automotivos', icon: Car },
+      { label: 'Uso doméstico e profissional', icon: BrushCleaning },
+    ],
+    sizes: ['500ml', '1L', '5L'],
+    amazonUrl: 'https://www.amazon.com.br/s?k=wex+clean+extratora',
   },
   {
-    image: '/products/piso-performance-1l.jpg',
-    title: 'WEX CLEAN Piso Performance 1L',
-    description: 'Limpa e perfuma pisos frios, cerâmicos ou de alto tráfego, sem deixar película pegajosa.',
-    amazonUrl: 'https://www.amazon.com.br/s?k=wex+clean+piso+performance',
-  }
+    icon: PawPrint,
+    title: 'Linha Pet',
+    tagline: 'Feito pra quem tem bichinho em casa',
+    description: 'Higienização segura pra ambientes com pets. Elimina manchas e odores na fonte, sem agredir patinhas, focinhos ou o faro sensível dos animais.',
+    bgClass: 'bg-green',
+    textClass: 'text-navy-deep',
+    indications: [
+      { label: 'Manchas de xixi e fezes', icon: Dog },
+      { label: 'Odor em caixas de areia e casinhas', icon: Wind },
+      { label: 'Estofados, carpetes e pisos', icon: Armchair },
+      { label: 'Ambientes com cães e gatos', icon: Bone },
+    ],
+    sizes: ['500ml', '1L'],
+    amazonUrl: 'https://www.amazon.com.br/s?k=wex+clean+pet',
+  },
 ];
 </script>
 
 <template>
-  <Section bg-color="bg-cream" text-color="text-navy" badge-bg-color="bg-navy" badge-text-color="text-cream"
-    description-text-color="text-navy/70">
-    <template #badge>Linha Wex Clean</template>
-    <template #title>Confira nossa linha de produtos</template>
-    <template #description>
-      Toda a linha WEX CLEAN disponível na <strong>Amazon</strong> e <strong>Mercado Livre</strong> com entrega rápida e
-      a garantia de
-      quem compra online.
-    </template>
-    <template #content>
-      <div class="grid gap-6 pt-4 sm:grid-cols-2 lg:grid-cols-4">
-        <ProductCard v-for="product in products" :key="product.title" v-bind="product" />
-      </div>
-    </template>
-  </Section>
+  <div>
+    <Section bg-color="bg-cream" text-color="text-navy" badge-bg-color="bg-navy" badge-text-color="text-cream"
+      description-text-color="text-navy/70" centered>
+      <template #badge>Nossas linhas</template>
+      <template #title>Conheça os produtos WEX CLEAN</template>
+      <template #description>
+        Indicações e tamanhos disponíveis já aparecem em cada linha — clique em "Saiba mais" pra mais detalhes.
+      </template>
+    </Section>
+
+    <ProductLineBanner v-for="line in lines" :key="line.title" v-bind="line" />
+  </div>
 </template>
