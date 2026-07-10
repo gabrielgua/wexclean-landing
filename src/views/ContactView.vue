@@ -1,29 +1,38 @@
 <script setup lang="ts">
-import Button from '@/Button.vue';
+import Button from '@/components/Button.vue';
 import ContactCard from '@/components/ContactCard.vue';
 import FormField from '@/components/FormField.vue';
 import Icon from '@/components/Icon.vue';
 import Section from '@/components/Section.vue';
-import { CheckCircle2, Mail, MapPin, MessageCircle, Send } from '@lucide/vue';
+import { useContactStore } from '@/stores/contact';
+import type { ContactForm } from '@/types/contact-form';
+import { CheckCircle2, Loader2, Mail, MapPin, MessageCircle, Send } from '@lucide/vue';
 import { ref } from 'vue';
 
-const form = ref({
+const form = ref<ContactForm>({
   name: '',
   email: '',
   subject: '',
   message: '',
 });
 
-const status = ref<'idle' | 'sending' | 'sent'>('idle');
+const contactStore = useContactStore();
 
 //TODO: integrate sedora-api
 function handleSubmit() {
-  status.value = 'sending';
-  setTimeout(() => {
-    status.value = 'sent';
-    form.value = { name: '', email: '', subject: '', message: '' };
-  }, 1200);
+  contactStore.submit(form.value);
+  resetForm();
 }
+
+const resetForm = () => {
+  form.value = {
+    name: '',
+    subject: '',
+    email: '',
+    message: ''
+  }
+}
+
 </script>
 
 <template>
@@ -70,9 +79,10 @@ function handleSubmit() {
           <FormField v-model="form.message" name="message" type="textarea" label="Mensagem"
             placeholder="Escreva sua mensagem..." />
 
-          <Button type="submit" :disabled="status === 'sending'">
-            <Icon :icon="status === 'sent' ? CheckCircle2 : Send" class="h-4 w-4" />
-            {{ status === 'sending' ? 'Enviando...' : status === 'sent' ? 'Mensagem enviada!' : 'Enviar mensagem' }}
+          <Button type="submit" :disabled="true">
+            <Icon v-if="true" :icon="Loader2" class="size-4 animate-spin" />
+            <Icon v-else :icon="Send" class="h-4 w-4" />
+            {{ true ? 'Enviando...' : 'Enviar Mensagem' }}
           </Button>
         </form>
       </div>

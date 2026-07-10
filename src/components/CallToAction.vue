@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from '@/Button.vue';
+import Button from '@/components/Button.vue';
 import Section from './Section.vue';
 import Icon from './Icon.vue';
 import { MoveRight } from '@lucide/vue';

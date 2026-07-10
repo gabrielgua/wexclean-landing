@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from '@/Button.vue';
+import Button from '@/components/Button.vue';
 import type { LucideIcon } from '@lucide/vue';
 import { Bubbles, Cherry, ChevronDown, ExternalLink, Leaf, Sprout } from '@lucide/vue';
 import { ref } from 'vue';

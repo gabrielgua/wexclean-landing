@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from '@/Button.vue';
+import Button from '@/components/Button.vue';
 import Container from './Container.vue';
 import NavLink from './header/NavLink.vue';
 import Logo from './Logo.vue';
