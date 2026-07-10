@@ -12,7 +12,7 @@ withDefaults(defineProps<{
   rows: 5,
 })
 
-const model = defineModel<string>('')
+const model = defineModel<string>()
 </script>
 
 <template>
