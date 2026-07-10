@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { Mail, MessageCircle } from '@lucide/vue';
 import Container from './Container.vue';
 import Logo from './Logo.vue';
+import Icon from './Icon.vue';
+import { ContactInformation } from '@/utils/contact-infomation.ts';
 
 </script>
 
@@ -14,16 +17,28 @@ import Logo from './Logo.vue';
             <h4 class="text-sm uppercase tracking-wider text-cream font-['Manrope',sans-serif] font-extrabold">
               Navegação
             </h4>
-            <a class="text-sm text-[#9AA5C2]! hover:text-gold!" href="#produtos">Produtos</a>
-            <a class="text-sm text-[#9AA5C2]! hover:text-gold!" href="#sobre">Sobre</a>
-            <a class="text-sm text-[#9AA5C2]! hover:text-gold!" href="#contato">Contato</a>
+            <RouterLink class="text-sm text-[#9AA5C2]! hover:text-gold!" active-class="text-gold!" to="/">
+              Home
+            </RouterLink>
+            <RouterLink class="text-sm text-[#9AA5C2]! hover:text-gold!" active-class="text-gold!" to="/products">
+              Produtos
+            </RouterLink>
+            <RouterLink class="text-sm text-[#9AA5C2]! hover:text-gold!" active-class="text-gold!" to="/contact">
+              Contato
+            </RouterLink>
           </div>
           <div class="space-y-2 flex flex-col">
             <h4 class="text-sm uppercase tracking-wider text-cream font-['Manrope',sans-serif] font-extrabold">
               Contato
             </h4>
-            <a class="text-sm text-[#9AA5C2]! hover:text-gold!" target="_blank" rel="noopener">WhatsApp</a>
-            <a class="text-sm text-[#9AA5C2]! hover:text-gold!">contato@wexclean.com.br</a>
+            <div class="flex items-center gap-2 text-sm text-[#9AA5C2]">
+              <Icon :icon="MessageCircle" />
+              {{ ContactInformation.phone }}
+            </div>
+            <div class="flex items-center gap-2 text-sm text-[#9AA5C2]">
+              <Icon :icon="Mail" />
+              {{ ContactInformation.email }}
+            </div>
           </div>
         </div>
       </div>
