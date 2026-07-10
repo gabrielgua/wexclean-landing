@@ -20,10 +20,12 @@ const isMobileHeaderOpen = ref(false);
         <NavLink to="/products">Produtos</NavLink>
         <NavLink to="/contact">Contato</NavLink>
       </nav>
-      <Button class="hidden md:flex">
-        <Icon :icon="MessageCircle" fill="var(--color-paper)" />
-        Fale Conosco
-      </Button>
+      <RouterLink to="/contact">
+        <Button class="hidden md:flex">
+          <Icon :icon="MessageCircle" fill="var(--color-paper)" />
+          Fale Conosco
+        </Button>
+      </RouterLink>
 
       <button type="button" class="md:hidden" :aria-expanded="isMobileHeaderOpen" aria-label="Abrir menu"
         @click="isMobileHeaderOpen = !isMobileHeaderOpen">

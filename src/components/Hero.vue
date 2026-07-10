@@ -36,11 +36,13 @@ import { MessageCircle, MoveRight } from '@lucide/vue';
             <Icon :icon="MoveRight" />
           </Button>
         </RouterLink>
-        <Button class="px-10" bg-color="bg-navy" text-color="text-white" shadow-color="shadow-white"
-          border-color="border-white">
-          <Icon :icon="MessageCircle" />
-          Fale Conosco
-        </Button>
+        <RouterLink to="/contact">
+          <Button class="px-10" bg-color="bg-navy" text-color="text-white" shadow-color="shadow-white"
+            border-color="border-white">
+            <Icon :icon="MessageCircle" />
+            Fale Conosco
+          </Button>
+        </RouterLink>
       </div>
     </template>
   </Section>
