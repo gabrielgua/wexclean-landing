@@ -6,6 +6,7 @@ import Icon from '@/components/Icon.vue';
 import Section from '@/components/Section.vue';
 import { useContactStore } from '@/stores/contact-store';
 import type { ContactForm } from '@/types/contact-form';
+import { ContactInformation } from '@/utils/contact-infomation';
 import { CheckCircle2, Loader2, Mail, MapPin, MessageCircle, Send, XCircle } from '@lucide/vue';
 import { ref } from 'vue';
 
@@ -54,12 +55,12 @@ const clearState = () => {
         <div class="space-y-6">
           <ContactCard :icon="Mail" shadow-color="shadow-gold" text-color="text-gold">
             <template #title>E-Mail</template>
-            <template #content>contato@wexclean.com.br</template>
+            <template #content>{{ ContactInformation.email }}</template>
           </ContactCard>
 
           <ContactCard :icon="MessageCircle" text-color="text-green-deep">
             <template #title>Whatsapp</template>
-            <template #content>Fale pelo WhatsApp</template>
+            <template #content>{{ ContactInformation.phone }}</template>
           </ContactCard>
 
           <ContactCard :icon="MapPin" shadow-color="shadow-blue" text-color="text-blue">
