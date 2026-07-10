@@ -28,10 +28,10 @@ withDefaults(defineProps<{
         :class="[badgeBgColor, badgeTextColor, { 'mx-auto': centered }]">
         <slot name="badge" />
       </div>
-      <h1 class="section-title" :class="[textColor]">
+      <h1 v-if="$slots['title']" class="section-title" :class="[textColor]">
         <slot name="title" />
       </h1>
-      <p class="text-lg leading-relaxed"
+      <p v-if="$slots['description']" class="text-lg leading-relaxed"
         :class="[descriptionTextColor, centered ? 'text-center max-w-none' : 'max-w-xl']">
         <slot name="description" />
       </p>
