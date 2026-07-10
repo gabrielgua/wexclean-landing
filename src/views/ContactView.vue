@@ -47,10 +47,10 @@ const clearState = () => {
       Dúvidas sobre os produtos, parcerias ou onde comprar? Manda uma mensagem que a gente responde rapidinho.
     </template>
   </Section>
-  <Section bg-color="bg-cream" text-color="text-navy" badge-bg-color="bg-navy" badge-text-color="text-cream"
-    description-text-color="text-navy/70">
+  <Section class="py-10! lg:py-20!" bg-color="bg-cream" text-color="text-navy" badge-bg-color="bg-navy"
+    badge-text-color="text-cream" description-text-color="text-navy/70">
     <template #content>
-      <div class="grid gap-16 grid-cols-[auto_1fr]">
+      <div class="grid gap-10 lg:gap-16 grid-cols-1 lg:grid-cols-[auto_1fr]">
 
         <div class="space-y-6">
           <ContactCard :icon="Mail" shadow-color="shadow-gold" text-color="text-gold">
@@ -106,7 +106,7 @@ const clearState = () => {
         </div>
 
         <form v-else
-          class="space-y-5 rounded-2xl border-[3px] border-navy bg-white p-7 shadow-[12px_12px_10px_0] shadow-gold"
+          class="space-y-5 rounded-2xl border-[3px] border-navy bg-white p-5 lg:p-6 shadow-[12px_12px_10px_0] shadow-gold"
           @submit.prevent="handleSubmit">
           <div class="grid gap-5 sm:grid-cols-2">
             <FormField v-model="form.name" name="name" label="Nome" placeholder="Seu nome" />
@@ -119,9 +119,10 @@ const clearState = () => {
           <FormField v-model="form.message" name="message" type="textarea" label="Mensagem"
             placeholder="Escreva sua mensagem..." />
 
-          <Button bg-color="bg-gold" type="submit" :disabled="contactStore.state.loading">
+          <Button class="w-full justify-center md:max-w-max" bg-color="bg-gold" type="submit"
+            :disabled="contactStore.state.loading">
             <Icon v-if="contactStore.state.loading" :icon="Loader2" class="size-4 animate-spin" />
-            <Icon v-else :icon="Send" class="h-4 w-4" />
+            <Icon v-else :icon="Send" class="size-4" />
             {{ contactStore.state.loading ? 'Enviando...' : 'Enviar Mensagem' }}
           </Button>
         </form>
