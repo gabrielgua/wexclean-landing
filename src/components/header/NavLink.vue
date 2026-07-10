@@ -5,7 +5,8 @@ defineProps<{
 </script>
 
 <template>
-  <RouterLink :to="to" class="link relative text-[15px] font-bold text-navy!">
+  <RouterLink :to="to" class="link relative text-[15px] font-bold text-navy transition-all"
+    active-class="active-link text-blue! font-extrabold">
     <slot />
   </RouterLink>
 </template>
@@ -24,5 +25,13 @@ defineProps<{
 
 .link:hover::after {
   width: 100%;
+}
+
+.active-link::after {
+  content: '';
+  position: absolute;
+  bottom: -0.175rem;
+  width: 100%;
+  background-color: var(--color-blue);
 }
 </style>

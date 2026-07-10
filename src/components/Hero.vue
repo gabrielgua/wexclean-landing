@@ -30,10 +30,12 @@ import { MessageCircle, MoveRight } from '@lucide/vue';
     </template>
     <template #content>
       <div class="flex items-center gap-4">
-        <Button class="px-10">
-          Ver produtos
-          <Icon :icon="MoveRight" />
-        </Button>
+        <RouterLink to="/products">
+          <Button class="px-10">
+            Ver produtos
+            <Icon :icon="MoveRight" />
+          </Button>
+        </RouterLink>
         <Button class="px-10" bg-color="bg-navy" text-color="text-white" shadow-color="shadow-white"
           border-color="border-white">
           <Icon :icon="MessageCircle" />

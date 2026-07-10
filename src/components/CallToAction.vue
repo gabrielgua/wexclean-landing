@@ -12,11 +12,13 @@ import { MoveRight } from '@lucide/vue';
     <template #title>Pronto para deixar tudo brilhando?</template>
     <template #description>Confira nossa linha de produtos profissionais de limpeza.</template>
     <template #content>
-      <Button class="justify-self-center" bg-color="bg-gold" text-color="text-navy-deep" shadow-color="shadow-navy-deep"
-        border-color="border-navy-deep">
-        Ver produtos
-        <Icon :icon="MoveRight" />
-      </Button>
+      <RouterLink to="/products">
+        <Button class="justify-self-center" bg-color="bg-gold" text-color="text-navy-deep"
+          shadow-color="shadow-navy-deep" border-color="border-navy-deep">
+          Ver produtos
+          <Icon :icon="MoveRight" />
+        </Button>
+      </RouterLink>
     </template>
   </Section>
 </template>
