@@ -29,16 +29,16 @@ import { MessageCircle, MoveRight } from '@lucide/vue';
       manchas. Poder profissional, no dia a dia da sua casa ou do seu negócio.
     </template>
     <template #content>
-      <div class="flex items-center gap-4">
-        <RouterLink to="/products">
-          <Button class="px-10">
+      <div class="flex flex-wrap md:flex-nowrap items-center gap-4">
+        <RouterLink to="/products" class="w-full md:max-w-max">
+          <Button class="px-10 w-full justify-center md:max-w-max">
             Ver produtos
             <Icon :icon="MoveRight" />
           </Button>
         </RouterLink>
-        <RouterLink to="/contact">
-          <Button class="px-10" bg-color="bg-navy" text-color="text-white" shadow-color="shadow-white"
-            border-color="border-white">
+        <RouterLink to="/contact" class="w-full md:max-w-max">
+          <Button class="px-10 w-full justify-center md:max-w-max" bg-color="bg-navy" text-color="text-white"
+            shadow-color="shadow-white" border-color="border-white">
             <Icon :icon="MessageCircle" />
             Fale Conosco
           </Button>
